@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot-vue?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #配置监控统计拦截的filter，stat：监控统计， log4j：日志， wall：防御sql注入
+    druid:
+      filters: stat, wall, log4j
+      max-pool-prepared-statement-per-connection-size: 20
+      use-global-data-source-stat: true
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+  #  thymeleaf:
+  #    #关闭模板引擎缓存
+  #    cache: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      max-file-size: 5MB
+
+mybatis-plus:
+  configuration:
+    #配置日志 这里使用默认的控制台输出，后续可以更换其他实现。
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  global-config:
+    db-config:
+      logic-delete-value: 1 #删除值为1
+      logic-not-delete-value: 0 #没删除为0
+      logic-delete-field: deleted #字段
+server:
+  port: 8090
+

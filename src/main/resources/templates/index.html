@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--需要添加命名空间-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+This is index.html
+<!--取数据-->
+<!--th: text转义-->
+<!--th: utext不转义（XSS）-->
+<div th:text="${name}"></div>
+<div th:utext="${name}"></div>
+
+
+<!--遍历集合 user(遍历出来的变量名（任取）: 要遍历的集合 ${user} 变量名})-->
+<!--<div th:each="user:${user}" th:text="${user}"></div>-->
+<div th:each="user:${user}">[[ ${user} ]]</div>
+</body>
+</html>
